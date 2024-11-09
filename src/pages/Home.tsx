@@ -43,7 +43,7 @@ const Home: React.FC = () => {
       {/* Products Section */}
       <main className="container mx-auto p-4">
         <Typography variant="h5" fontWeight="500" gutterBottom>
-          Products
+          Shop by Products
         </Typography>
         <ProductList />
       </main>
