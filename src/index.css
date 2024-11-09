@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Change the color of the active bullet */
+.swiper-pagination-bullet {
+  background-color: #ff5733 !important; /* Set your desired color */
+}
+
+/* Change the color of the active bullet */
+.swiper-pagination-bullet-active {
+  background-color: #4a5568 !important; /* Set your active bullet color */
+}
+
+/* Custom navigation button color */
+.swiper-button-next {
+    color: #4a5568 !important;
+}
+
+.swiper-button-prev {
+  color: #9CA3AF !important; /* Blue color for the arrows */
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #4a5568; /* Darker blue on hover */
+}
+
+
