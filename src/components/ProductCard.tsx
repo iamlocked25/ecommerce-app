@@ -1,12 +1,12 @@
-import { Box, Button, Typography } from "@mui/material";
 import React from "react";
+import { Box, Button, Typography } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 interface ProductCardProps {
   image: string;
   name: string;
   price: number;
-  onAddToCart: () => void;
+  onAddToCart: () => void; // Add this line
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -40,8 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       size="large"
       className="w-full"
       startIcon={<ShoppingCartIcon />}
-      onClick={onAddToCart}
-      //   className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+      onClick={onAddToCart} // Attach the onAddToCart function here
     >
       Add to Cart
     </Button>

@@ -1,14 +1,27 @@
-import React from 'react';
+// Navbar.tsx
+import React from "react";
+import { AppBar, Toolbar, Typography, IconButton, Badge } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Link } from "react-router-dom";
+import { useCart } from "./CartContext";
 
-const Navbar: React.FC = () => (
-  <nav className="bg-gray-800 text-white p-4">
-    <div className="container mx-auto flex justify-between">
-      <h1 className="text-lg font-bold">eCommerce Store</h1>
-      <div className="flex items-center">
-        <span>Cart (0)</span>
-      </div>
-    </div>
-  </nav>
-);
+const Navbar: React.FC = () => {
+  const { cartCount } = useCart(); // Use cartCount here
+
+  return (
+    <AppBar position="static" className="bg-gray-800 text-white">
+      <Toolbar className="container mx-auto flex justify-between">
+        <Typography variant="h6" component="div" className="font-bold text-lg">
+          <Link to="/">eCommerce Store</Link>
+        </Typography>
+        <IconButton color="inherit" component={Link} to="/cart">
+          <Badge badgeContent={cartCount} color="error">
+            <ShoppingCartIcon />
+          </Badge>
+        </IconButton>
+      </Toolbar>
+    </AppBar>
+  );
+};
 
 export default Navbar;

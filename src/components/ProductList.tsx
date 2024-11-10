@@ -6,6 +6,7 @@ import "swiper/css/autoplay"; // Import autoplay CSS
 import { Autoplay, Pagination } from "swiper/modules"; // Import Pagination module
 import ProductCard from "./ProductCard";
 import { Box } from "@mui/material";
+import { useCart } from "../components/CartContext"; // Import useCart to access addToCart
 
 interface Product {
   id: number;
@@ -15,13 +16,13 @@ interface Product {
 }
 
 const ProductList: React.FC = () => {
+  const { addToCart } = useCart(); // Access addToCart from context
   const [products, setProducts] = useState<Product[]>([]);
 
   const getProducts = () => {
     fetch("https://dummyjson.com/products?limit=10&skip=10")
       .then((res) => res.json())
       .then((data) => {
-        // Map data to match Product type structure
         const fetchedProducts = data.products.map((product: any) => ({
           id: product.id,
           name: product.title,
@@ -63,7 +64,12 @@ const ProductList: React.FC = () => {
                 image={product.image}
                 name={product.name}
                 price={product.price}
-                onAddToCart={() => console.log(`Added ${product.name} to cart`)}
+                onAddToCart={() =>
+                  addToCart({
+                    ...product, // Spread the product object
+                    quantity: 1, // Add the default quantity when adding to the cart
+                  })
+                } // Call addToCart here with quantity
               />
             </Box>
           </SwiperSlide>
