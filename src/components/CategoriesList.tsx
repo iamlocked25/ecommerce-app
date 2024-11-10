@@ -59,7 +59,7 @@ const CategoriesList: React.FC = () => {
                 name={category.name}
                 slug={category.slug}
                 viewCategory={() =>
-                  console.log(`Added ${category.name} to cart`)
+                  (window.location.href = `/category/${category.slug}`)
                 }
               />
             </Box>
